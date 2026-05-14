@@ -1,1 +1,10 @@
+// Example of Grey Stage Definition (Mental State)
+{
+	"directory": "grey",
+	"defaultZoom": 0.8,
+	"stageUI": "impostor",
+	"camera_speed": "1",
+	"stageEvents": "true",
+	"isGrey": "true"
+}
 
