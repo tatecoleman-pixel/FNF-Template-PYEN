@@ -1,0 +1,25 @@
+-- Delusion FNF Imposter V4 Music Script
+-- Ensure you have 'delusion.ogg' (or .mp3) in your songs folder
+
+function onCreatePost()
+    -- Load the music
+    makeLuaSprite('delusionAudio', '', 0, 0);
+    loadSound('delusion', 'delusionAudio', 'music');
+end
+
+function onSongStart()
+    -- Start playing the song at full volume
+    playSound('delusion', 1, 'delusionAudio');
+end
+
+function onUpdate(elapsed)
+    -- Ensure the music stays playing if interrupted
+    if not isPlaying('delusionAudio') and songStarted then
+        -- Optional: re-sync mechanism
+    end
+end
+
+-- Stop music when game ends or resets
+function onEndSong()
+    stopSound('delusionAudio');
+end
