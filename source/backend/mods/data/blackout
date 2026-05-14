@@ -1,0 +1,8 @@
+function onStepHit()
+    if curStep >= 128 and curStep <= 384 then
+        -- Periodically forces the HUD / Arrow Strut opacity to drop to 10%
+        setProperty('camHUD.alpha', 0.1)
+    else
+        setProperty('camHUD.alpha', 1.0)
+    end
+end
