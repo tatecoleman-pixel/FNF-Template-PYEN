@@ -1,1 +1,35 @@
+-- Blackout Song Script - VS Impostor V4 Style
+-- Place in mods/songs/blackout/script.lua
+
+local allowCountdown = false
+function onStartCountdown()
+	if not allowCountdown and not seenCutscene then
+		startDialogue('dialogue', 'breakfast'); -- Placeholder if you have dialogue
+		allowCountdown = true;
+		return Function_Stop;
+	end
+	return Function_Continue;
+end
+
+-- Blackout Screen Effect
+function onEvent(name, value1, value2)
+	if name == 'Blackout' then
+		if value1 == '1' then
+			doTweenAlpha('screenFade', 'blackScreen', 1, 0.1, 'linear');
+			setProperty('camHUD.alpha', 0);
+		else
+			doTweenAlpha('screenFade', 'blackScreen', 0, 0.5, 'linear');
+			setProperty('camHUD.alpha', 1);
+		end
+	end
+end
+
+function onCreatePost()
+	-- Create the black screen object
+	makeLuaSprite('blackScreen', nil, 0, 0);
+	makeGraphic('blackScreen', screenWidth, screenHeight, '000000');
+	setObjectCamera('blackScreen', 'hud');
+	setProperty('blackScreen.alpha', 0);
+	addLuaSprite('blackScreen', true);
+end
 
